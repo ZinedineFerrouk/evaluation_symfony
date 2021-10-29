@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="my-5">Les informations sur votre resto:
+		</h1>
+
+		<div class="card mb-3 mx-auto">
+			<div class="row">
+				<div class="col-md-4">
+					<img src="{{ resto.image }}" class="card-img" alt="{{ resto.name }}">
+				</div>
+				<div class="col-md-8">
+					<div class="card-body">
+						<h5 class="card-title">{{ resto.name }}</h5>
+						<p class="card-text">
+							{{ resto.ville.name }}
+
+							<small class="text-muted">
+								<a href=" {{ path('ville_details', {name: resto.ville.name}) }} ">| En savoir plus sur la ville ...</a>
+							</small>
+						</p>
+
+						<p class="card-text">
+							<small class="text-muted">{{ resto.adress }}</small>
+						</p>
+						<p class="card-text">
+							<small class="text-muted">{{ resto.proprietaire.name }},
+								{{ resto.proprietaire.firstName }}</small>
+							<small class="text-muted">
+								<a href=" {{ path('proprio_details', {name: resto.proprietaire.name}) }} ">
+									| En savoir plus sur le propriétaire ...</a>
+							</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

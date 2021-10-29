@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details ville
+{% endblock %}
+
+{% block body %}
+<div class="container">
+	<h1 class="my-5">Les informations sur la ville:
+	</h1>
+
+	<div class="card mb-3 mx-auto">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="card-body">
+					<h5 class="card-title">Nom de la ville: {{ ville.name }}</h5>
+					{% if ville.restaurant %}
+					<p class="card-text">Listes des restaurants :
+						{% for resto in ville.restaurant %}
+					<ul>
+						<li>Nom: <a href=" {{ path('resto_details', {name: resto.name}) }} ">{{ resto.name }}</a></li>
+						<li>Propriétaire: <a href=" {{ path('proprio_details', {name: resto.proprietaire.name}) }} ">{{ resto.proprietaire.name }}, {{ resto.proprietaire.firstName }}</a></li>
+					</ul>
+					{% endfor %}
+					{% endif %}
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

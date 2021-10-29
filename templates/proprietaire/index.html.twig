@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détail propriétaire
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="my-5">Les informations sur le propriétaire :
+		</h1>
+
+		<div class="card mb-3 mx-auto">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="card-body">
+						<h5 class="card-title">
+							Nom: {{ proprio.name }}, 
+							Prénom: {{ proprio.firstName }}</h5>
+						<p class="card-text">
+							Nom du restaurant:
+							<strong>{{ proprio.restaurant.name }}</strong>
+
+							<small class="text-muted text-decoration-none">
+								<a href=" {{ path('resto_details', {name: proprio.restaurant.name}) }} ">| En savoir plus sur le restaurant ...</a>
+							</small>
+						</p>
+						<p>Ville: <strong>{{ proprio.restaurant.ville.name }}</strong>
+							<small class="text-muted text-decoration-none">
+								<a href=" {{ path('ville_details', {name: proprio.restaurant.ville.name}) }} ">| En savoir plus sur la ville ...</a>
+							</small>
+						</p>
+						
+
+						<p class="card-text">
+							<small class="text-muted">Date de naissance:
+								{{ proprio.birthDate|date("d/m/Y") }}</small>
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
